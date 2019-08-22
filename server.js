@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cors = require('cors');
 
 var Harvest = require('./harvest-model');
+var Type= require('./type-model');
 
 //setup database connection
 var connectionString = 'mongodb://heaps:heaps12345@cluster0-shard-00-00-tffee.mongodb.net:27017,cluster0-shard-00-01-tffee.mongodb.net:27017,cluster0-shard-00-02-tffee.mongodb.net:27017/heaps?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority';
@@ -32,6 +33,13 @@ router.get('/harvests', (req, res) => {
     .then((harvests)=>{
         return res.json(harvests);
     });
+})
+
+router.get('/types', (req, res) => {
+	Type.find()
+	 .then((types)=>{
+			 return res.json(types);
+	 });
 })
 router.get('/harvests/:id', (req, res) => {
 
