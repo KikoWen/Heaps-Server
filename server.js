@@ -29,7 +29,8 @@ router.get('/testing', (req, res) => {
   })
 
 router.get('/harvests', (req, res) => {
-   Harvest.find()
+	 Harvest.find()
+	 .populate('type')
     .then((harvests)=>{
         return res.json(harvests);
     });

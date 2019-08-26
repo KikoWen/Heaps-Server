@@ -6,7 +6,7 @@ var TypeSchema = new Schema(
   {
     id: Number,
     name: String,
-    
+    photo:String
   },
   { timestamps: true }
 );
