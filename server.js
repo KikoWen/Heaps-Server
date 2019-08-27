@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cors = require('cors');
 var fileUpload = require('express-fileupload');
 
+
+
 var Harvest = require('./harvest-model');
 var Type= require('./type-model');
 
@@ -66,6 +68,18 @@ router.post('/harvests', (req, res) => {
 	.then((harvest) => {
 	  	return res.json(harvest);
 	});
+});
+
+
+router.post('/upload', (req, res) => {
+	
+	var files = Object.values(req.files);
+	var uploadedFile = files[0];
+
+	var newName = Date.now() + uploadedFile.name;
+	uploadedFile.mv('public/' + newName,function(){
+		res.send(newName);
+	})
 });
 
 router.delete('/harvests/:id', (req, res) => {
