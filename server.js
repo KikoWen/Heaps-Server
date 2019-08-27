@@ -36,7 +36,7 @@ router.get('/testing', (req, res) => {
 
 router.get('/harvests', (req, res) => {
 	 Harvest.find()
-	 .populate('type')
+	//  .populate('type')
     .then((harvests)=>{
         return res.json(harvests);
     });
