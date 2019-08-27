@@ -11,7 +11,8 @@ var HarvestSchema = new Schema(
     description: String,
     location: String,
     gardenerId: Number,
-    type_id:Number
+    type_id:Number,
+    photo:String
   },
   { 
     timestamps: true,
